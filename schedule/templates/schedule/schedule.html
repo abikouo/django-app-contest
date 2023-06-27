@@ -1,0 +1,31 @@
+{% extends "schedule/base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Based on your input here is your today's suggestion</h1>
+{% if PTO %}
+<div align="center">
+    <img src="{% static 'images/pto.png' %}" alt="annoyed">
+</div>
+{% else %}
+<div id="main">
+    <table class="pulls">
+        <thead>
+            <tr>
+                <th id="thTitle">Activities</th>
+                <th id="thBranch">Hour(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activity in Activities %}
+            <tr>
+                <th>{{ activity.name }}</th>
+                <td>{{ activity.hours }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+<p><a href="/schedule/">Create another schedule</a></p>
+{% endblock %}

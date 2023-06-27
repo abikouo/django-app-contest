@@ -1,0 +1,39 @@
+{% extends "schedule/base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>What's your mood today?</h1>
+<br/>
+<br/>
+<form action="{% url 'today' %}" method="post">
+    {% csrf_token %}
+    <div align="center">
+        <input type="checkbox" id="annoyed" name="annoyed"/>
+        <img src="{% static 'images/annoyed.png' %}" alt="annoyed" class="opaque">
+        <input type="checkbox" id="bored" name="bored"/>
+        <img src="{% static 'images/bored.png' %}" alt="bored" class="opaque">
+        <input type="checkbox" id="cool" name="cool"/>
+        <img src="{% static 'images/cool.png' %}" alt="cool" class="opaque">
+        <input type="checkbox" id="hot" name="hot"/>
+        <img src="{% static 'images/hot.png' %}" alt="hot" class="opaque">
+    </div>
+    <br/>
+    <br/>
+    <div align="center">
+        <input type="checkbox" id="nervous" name="nervous"/>
+        <img src="{% static 'images/nervous.png' %}" alt="nervous" class="opaque">
+        <input type="checkbox" id="quiet" name="quiet"/>
+        <img src="{% static 'images/quiet.png' %}" alt="quiet" class="opaque">
+        <input type="checkbox" id="sick" name="sick"/>
+        <img src="{% static 'images/sick.png' %}" alt="sick" class="opaque">
+        <input type="checkbox" id="sleep" name="sleep"/>
+        <img src="{% static 'images/sleep.png' %}" alt="sleep" class="opaque">
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div align="center">
+        <button id="send" name="send" type="submit" style="height:50px;width:200px;background-color: gainsboro; font-size: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Send</button>
+    </div>
+</form>
+{% endblock %}

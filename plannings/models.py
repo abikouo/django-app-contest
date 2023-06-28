@@ -2,9 +2,9 @@ from django.db import models
 import json
 
 
-class Plannings(models.Model):
+class Planning(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    name = models.TextField()
+    name = models.TextField(blank=True)
     activities = models.CharField(default="PTO", max_length=2000)
     pto = models.BooleanField(default=False)
 

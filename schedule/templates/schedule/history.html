@@ -1,0 +1,44 @@
+{% extends "schedule/base.html" %}
+{% load static %}
+
+{% block content %}
+{% if history %}
+<h1>Daily suggestion history</h1>
+{% for item in history %}
+<p><a style="width: 200px; padding: 8pt;">{{ item.name }}</a><a style="width: 10px; padding: 8pt;" href="/schedule/history/{{ item.id }}">view</a><a href="/schedule/history/delete/{{ item.id }}">delete</a></p>
+{% endfor %}
+{% else %}
+{% if history_info %}
+<h1>Description for suggestion --- <a style="color: blue;">{{ history_info.name }}</a> ---</h1>
+{% if history_info.pto %}
+<div align="center">
+    <img src="{% static 'images/pto.png' %}" alt="annoyed">
+</div>
+{% else %}
+<div id="main">
+    <table class="pulls">
+        <thead>
+            <tr>
+                <th id="thTitle">Activities</th>
+                <th id="thBranch">Hour(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activity in history_info.activities %}
+            <tr>
+                <th>{{ activity.name }}</th>
+                <td>{{ activity.hours }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+<p><a href="/schedule/history/delete/{{ history_info.id }}">Delete from history</a></p>
+<br />
+<p><a href="/schedule/history">Back to history</a></p>
+{% endif %}
+{% endif %}
+<br/>
+<p><a href="/schedule/">Back to main page</a></p>
+{% endblock %}
